@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <title>Giới thiệu | Lạc Ngọc Như ✨</title>
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Hiệu ứng mưa trái tim (canvas) -->
+    <canvas id="heartRainCanvas"></canvas>
+
+    <div class="container">
+      <div class="header-bar">
+        <nav class="main-nav">
+          <a href="index.html" class="nav-link active"
+            ><i class="fas fa-home"></i> Trang chủ</a
+          >
+          <a href="album.html" class="nav-link"
+            ><i class="fas fa-images"></i> Album ảnh</a
+          >
+        </nav>
+        <div class="theme-toggle" id="darkModeToggle">
+          <i class="fas fa-moon" id="themeIcon"></i>
+          <span id="themeText">Chế độ tối</span>
+        </div>
+      </div>
+
+      <div class="grid">
+        <!-- Cột trái: Thông tin cá nhân -->
+        <div class="card">
+          <div class="profile">
+            <div class="avatar">
+              <i class="fas fa-user-astronaut"></i>
+            </div>
+            <h1>Lạc Ngọc Như</h1>
+            <div class="tagline">✨ Nữ 2004 - Cung Cự Giải ✨</div>
+            <div class="bio">
+              Vibe code - Trang này tạo ra để mọi người hiểu về mình, và cũng để
+              mọi người để lại lời nhắn gì đó chưa tiện nói. Thoải mái nha!
+            </div>
+            <div class="social-links">
+              <a href="mailto:nhulacngoc@gmail.com"
+                ><i class="fas fa-envelope"></i> nhulacngoc@gmail.com</a
+              >
+              <a href="https://www.facebook.com/lacnhu04" target="_blank"
+                ><i class="fab fa-facebook"></i> Lạc Như</a
+              >
+              <a
+                href="https://www.linkedin.com/in/nh%C6%B0-l%E1%BA%A1c-ng%E1%BB%8Dc-947009350/"
+                target="_blank"
+                ><i class="fab fa-linkedin-in"></i> LinkedIn</a
+              >
+            </div>
+          </div>
+
+          <div class="fun-stats" style="margin-top: 1.5rem">
+            <div class="stat-card">
+              <i class="far fa-clock"></i>
+              <div class="stat-number" id="liveClock">--:--:--</div>
+              <div>Giờ VN</div>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-lightbulb"></i>
+              <div class="stat-number" id="randomQuote">✨</div>
+            </div>
+          </div>
+
+          <!-- 🎵 Music Player -->
+          <div style="margin-top: 1.5rem">
+            <h3><i class="fas fa-music"></i> Nhạc yêu thích</h3>
+            <div class="music-player">
+              <div class="music-info">
+                <i class="fas fa-headphones"></i>
+                <span id="songName">Chưa chọn bài</span>
+              </div>
+              <div class="music-controls">
+                <button id="playSongBtn"><i class="fas fa-play"></i></button>
+                <button id="stopSongBtn"><i class="fas fa-stop"></i></button>
+              </div>
+              <select id="songSelect" class="song-select">
+                <option value="">-- Chọn bài hát --</option>
+                <option
+                  value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+                >
+                  🎵 Nhạc thư giãn 1
+                </option>
+                <option
+                  value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+                >
+                  🎵 Nhạc thư giãn 2
+                </option>
+                <option
+                  value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+                >
+                  🎵 Nhạc thư giãn 3
+                </option>
+              </select>
+              <audio
+                id="audioPlayer"
+                controls
+                style="width: 100%; margin-top: 10px; display: none"
+              ></audio>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cột phải: Form ẩn danh + guestbook -->
+        <div class="card">
+          <h3><i class="fas fa-comment-dots"></i> Gửi tin nhắn ẩn danh</h3>
+          <p
+            style="
+              font-size: 0.8rem;
+              margin-bottom: 1rem;
+              color: var(--text-secondary);
+            "
+          >
+            Tin nhắn của bạn sẽ được gửi đến email cá nhân
+          </p>
+          <form
+            id="anonymousForm"
+            action="https://formspree.io/f/myklbebk"
+            method="POST"
+          >
+            <div class="form-group">
+              <label
+                ><i class="fas fa-user-secret"></i> Biệt danh (tùy chọn)</label
+              >
+              <input
+                type="text"
+                name="name"
+                placeholder="Người bí ẩn..."
+                id="anonName"
+              />
+            </div>
+            <div class="form-group">
+              <label
+                ><i class="fas fa-envelope"></i> Email (ẩn danh, không bắt
+                buộc)</label
+              >
+              <input type="email" name="email" placeholder="bạn@gmail.com" />
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-pen-fancy"></i> Lời nhắn *</label>
+              <textarea
+                name="message"
+                rows="3"
+                placeholder="Gửi lời nhắn, góp ý, hoặc bất cứ điều gì..."
+                required
+              ></textarea>
+            </div>
+            <button type="submit">
+              <i class="fas fa-paper-plane"></i> Gửi ẩn danh
+            </button>
+            <div id="formStatus" class="form-status"></div>
+          </form>
+
+          <div style="margin-top: 1.6rem">
+            <h4><i class="fas fa-book-open"></i> Sổ lưu niệm ẩn danh</h4>
+            <div class="guestbook-list" id="guestbookList">
+              <div class="guest-message">
+                <i>Chưa có lời nhắn nào, hãy là người đầu tiên!</i>
+              </div>
+            </div>
+            <button
+              id="clearGuestbookBtn"
+              style="background: #4b5563; margin-top: 8px; font-size: 0.7rem"
+            >
+              <i class="fas fa-trash-alt"></i> Xóa sổ lưu niệm
+            </button>
+          </div>
+        </div>
+
+        <!-- Dòng bot chat + tính năng thú vị -->
+        <div class="card full-width">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              flex-wrap: wrap;
+              gap: 15px;
+            "
+          >
+            <div>
+              <h3>
+                <i class="fas fa-robot"></i> Trò chuyện cùng tôi - Chatbot
+              </h3>
+              <p style="font-size: 0.85rem">
+                Hỗ trợ trực tiếp qua Tawk.to (bạn có thể đặt câu hỏi ngay)
+              </p>
+            </div>
+            <div class="fun-stats" style="margin: 0; gap: 0.5rem">
+              <div class="stat-card" style="padding: 0.5rem 0.8rem">
+                <i class="fas fa-heart" style="color: #f43f5e"></i>
+                <span id="likeCount">0</span>
+                <span style="font-size: 0.7rem">lượt thích</span>
+                <button
+                  id="likeBtn"
+                  style="
+                    background: none;
+                    color: var(--accent);
+                    padding: 0;
+                    margin-left: 8px;
+                    box-shadow: none;
+                    font-size: 1rem;
+                  "
+                >
+                  <i class="fas fa-thumbs-up"></i>
+                </button>
+              </div>
+              <div class="stat-card" style="padding: 0.5rem 0.8rem">
+                <i class="fas fa-magic"></i>
+                <span id="funFact">Click để có fact hay</span>
+                <button
+                  id="newFactBtn"
+                  style="
+                    background: none;
+                    color: var(--accent);
+                    padding: 0;
+                    margin-left: 5px;
+                  "
+                >
+                  <i class="fas fa-sync-alt"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <!-- Tawk.to Widget Script -->
+    <script type="text/javascript">
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+      (function () {
+        var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = "https://embed.tawk.to/66f86534e5982d6c7bb61f6a/1i8t4mm94";
+        s1.charset = "UTF-8";
+        s1.setAttribute("crossorigin", "*");
+        s0.parentNode.insertBefore(s1, s0);
+      })();
+    </script>
+  </body>
+</html>
