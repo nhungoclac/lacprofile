@@ -185,16 +185,20 @@ const albumImages = [
     caption: "TGL 2023 (Vũng Tàu)",
   },
   {
-    url: "/photo/ctxh1.jpg",
+    url: "photo/ctxh1.jpg",
     caption: "MĐYT 2023 (Dak Nong)",
   },
   {
-    url: "/photo/vt2023.jpg",
-    caption: "Vũng Tàu 2023",
+    url: "photo/vt2023.jpg",
+    caption: "Vũng Tàu 2024",
+  },
+  {
+    url: "photo/VT2025.jpg",
+    caption: "Vũng Tàu 2025",
   },
   { url: "/photo/nct2025.jpg", caption: "Nam Cát Tiên 2025" },
   {
-    url: "/photo/hue2025.jpg",
+    url: "/photo/qb2025.jpg",
     caption: "Quảng Bình 2025",
   },
   {
