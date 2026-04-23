@@ -177,11 +177,11 @@ document.getElementById("stopSongBtn")?.addEventListener("click", () => {
 // Album (chỉ chạy khi có albumGrid)
 const albumImages = [
   {
-    url: "/photo/qs2.jpg",
+    url: "photo/qs2.jpg",
     caption: "Quân sự 2022",
   },
   {
-    url: "/photo/ctxh2.jpg",
+    url: "photo/ctxh2.jpg",
     caption: "TGL 2023 (Vũng Tàu)",
   },
   {
@@ -196,13 +196,13 @@ const albumImages = [
     url: "photo/VT2025.jpg",
     caption: "Vũng Tàu 2025",
   },
-  { url: "/photo/nct2025.jpg", caption: "Nam Cát Tiên 2025" },
+  { url: "photo/nct2025.jpg", caption: "Nam Cát Tiên 2025" },
   {
-    url: "/photo/qb2025.jpg",
+    url: "photo/qb2025.jpg",
     caption: "Quảng Bình 2025",
   },
   {
-    url: "/photo/hue2025.jpg",
+    url: "photo/hue2025.jpg",
     caption: "Huế 2025",
   },
 ];
